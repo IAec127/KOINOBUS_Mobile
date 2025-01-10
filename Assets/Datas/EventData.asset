@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1488b7aa1cc187b4fb29b1b607c08a42, type: 3}
+  m_Name: EventData
+  m_EditorClassIdentifier: 
+  eventTime: 30
+  createEventTime: 90
+  tailWindSpeed: 300
+  headWindSpeed: -60
+  upBurstVec: {x: 0, y: 70, z: 0}
+  downBurstVec: {x: 0, y: -70, z: 0}
+  tornadoSens: {x: 1.1, y: 1.1, z: 1.1}
+  crazyHomingTime: 6
+  popupTime: 10
+  tailWindText: "\u7A81\u98A8\u304C\u767A\u751F\uFF0130\u79D2\u9593\u6A5F\u4F53\u306E\u901F\u5EA6\u304C\u6700\u9AD8\u901F\u5EA6\u306B\u56FA\u5B9A!!"
+  headWindText: "\u9006\u98A8\u304C\u767A\u751F\uFF0130\u79D2\u9593\u6A5F\u4F53\u306E\u901F\u5EA6\u304C\u6700\u9AD8\u901F\u5EA6\u304C\u4F4E\u4E0B!!"
+  upBurstText: "\u4E0A\u6607\u6C17\u6D41\u304C\u767A\u751F\uFF0130\u79D2\u9593\u6A5F\u4F53\u304C\u6301\u3061\u4E0A\u3052\u3089\u308C\u308B!!"
+  downBurstText: "\u30C0\u30A6\u30F3\u30D0\u30FC\u30B9\u30C8\u304C\u767A\u751F\uFF0130\u79D2\u9593\u6A5F\u4F53\u304C\u6C88\u3080!!"
+  tornadoText: "\u7ADC\u5DFB\u304C\u767A\u751F\uFF0130\u79D2\u9593\u6A5F\u4F53\u306E\u65CB\u56DE\u304C\u4E0A\u6607!!"
+  crazyWindText: "\u72C2\u98A8\u304C\u767A\u751F\uFF0130\u79D2\u9593\u5F3E\u3092\u6483\u3061\u653E\u984C!!"
