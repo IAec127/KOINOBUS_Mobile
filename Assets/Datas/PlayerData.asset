@@ -30,7 +30,7 @@ MonoBehaviour:
   minHeight: 8
   keyboardSens: {x: 120, y: 20, z: 80}
   joyconSens: {x: 50, y: 50, z: 50}
-  smartphoneSens: {x: 0.5, y: 1, z: 1}
+  smartphoneSens: {x: 0.75, y: 1.5, z: 1}
   maxJoyconRot: {x: 90, y: 90}
   joyconDeadzone: {x: 0.1, y: 0.1}
   accelRot: 30

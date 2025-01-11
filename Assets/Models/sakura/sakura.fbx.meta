@@ -3,7 +3,17 @@ guid: 724152f21fc283e4d927407541fde118
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bark03_0Mat
+    second: {fileID: 2100000, guid: 6786e4ff610831b4ab64e88678a66b37, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sakura_basecolor_1Mat
+    second: {fileID: 2100000, guid: ee8bc931f20a9864c9cba0942f9c386c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
