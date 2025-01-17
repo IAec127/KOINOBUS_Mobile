@@ -8,6 +8,7 @@ public class HaloManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI time;
 
     private int haloNum = 0;
+    private int maxHaloNum = 0;
     private bool gameStart = false;
     //カウントアップ
     private float countUp = 0;
@@ -20,7 +21,7 @@ public class HaloManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        count.text = haloNum.ToString();
+        count.text = haloNum.ToString() + " / " + maxHaloNum.ToString();
         //時間をカウントダウンする
         countUp++;
         var countTime = (int)(countUp / 60.0f);
@@ -37,6 +38,7 @@ public class HaloManager : MonoBehaviour
     {
         if (gameStart == false) gameStart = true;
         haloNum++;
+        maxHaloNum = haloNum;
     }
 
     public void Hit()

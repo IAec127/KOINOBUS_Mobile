@@ -291,12 +291,11 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     // 竜巻イベント時の旋回加算値
     public Vector3 tornadoSens { get; set; }
 
+    //-----------------------------
+    // テスト用
+    //-----------------------------
 
-	//-----------------------------
-	// テスト用
-	//-----------------------------
-
-	private float invincibleTime = 5.0f;
+    private float invincibleTime = 5.0f;
 
 	//テスト用　仮のパーティクルシステム
 	[SerializeField]
@@ -339,7 +338,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 				var reticleUI = GameObject.FindGameObjectWithTag("Reticle").GetComponent<Reticle>();
 				reticleUI.localPlayer = gameObject;
 				reticleUI.bulletSpawner = gameObject.GetComponent<BulletSpawner>();
-				hpUI = GameObject.FindWithTag("HpUI").GetComponent<HpUI>();
+				//hpUI = GameObject.FindWithTag("HpUI").GetComponent<HpUI>();
 				scoreUI = GameObject.FindWithTag("ScoreUI").GetComponent<ScoreUI>();
 			}
 			else
@@ -499,7 +498,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 	{
 		if (collision.gameObject.layer == LayerMask.NameToLayer("HitPlayer"))
 		{
-			if(photonView.IsMine)
+			//if(photonView.IsMine)
 			{
 				// 法線から自機と壁の角度を計算
 				Vector3 wallNormal = collision.contacts[0].normal;
@@ -511,15 +510,17 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 				{
 					knockbackState.KnockbackDir = transform.forward;
 					knockbackState.isKnockbacking = true;
-					photonView.RPC(nameof(ChangeState), RpcTarget.All, PLAYER_STATE.KNOCK_BACK);
+					//photonView.RPC(nameof(ChangeState), RpcTarget.All, PLAYER_STATE.KNOCK_BACK);
+					ChangeState(PLAYER_STATE.KNOCK_BACK);
 				}
 				if (angle >= 90.0f)
 				{
 					knockbackState.KnockbackDir = -transform.forward;
 					knockbackState.isKnockbacking = false;
-					photonView.RPC(nameof(ChangeState), RpcTarget.All, PLAYER_STATE.KNOCK_BACK);
-				}
-			}
+                    //photonView.RPC(nameof(ChangeState), RpcTarget.All, PLAYER_STATE.KNOCK_BACK);
+                    ChangeState(PLAYER_STATE.KNOCK_BACK);
+                }
+            }
 		}
 	}
 
@@ -743,7 +744,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 	{
 		if (nowState != null)
 		{
-			if(photonView.IsMine)
+			//if(photonView.IsMine)
 			{
 				nowState.Exit();
 			}
@@ -753,7 +754,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 		nowState = nextState;
 		if (nextState != null )
 		{
-			if(photonView.IsMine)
+			//if(photonView.IsMine)
 			{
 				nextState.Enter();
 			}

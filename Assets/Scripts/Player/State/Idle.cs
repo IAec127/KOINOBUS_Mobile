@@ -293,9 +293,6 @@ public class Idle : IState
 			//		vCameraCompoer.m_TrackedObjectOffset = offset;
 			//	}
 			//}
-
-			//テスト用
-			Debug.Log("TotalGyro" + input.TotalGyro.ToString());
         }
 		if(!player.IsRotate)
 		{

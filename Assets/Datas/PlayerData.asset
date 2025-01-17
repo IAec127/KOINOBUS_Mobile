@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 3
   minSpeed: 20
-  maxSpeed: 44
+  maxSpeed: 100
   speedDecay: 1
-  brakePower: 1
+  brakePower: 100
   rollControllTime: 1
   returnRollSpeed: 1
   totalBoost: 100

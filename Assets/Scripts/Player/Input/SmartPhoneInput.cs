@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class SmartPhone : PlayerInput
 {
+
     private Gyroscope _gyro;
     private Vector3 _defaultAttitude;
+
+    private bool isAccel;
 
     [SerializeField] private Vector3 _attitudeOffset = Vector3.zero;    // ジャイロの誤差を無視するオフセット
     [SerializeField] private Vector3 _rotateOffset = Vector3.zero;    // ジャイロの誤差を無視するオフセット
 
     //デバッグ用
-    [SerializeField] private TextMeshProUGUI text1;
+    [SerializeField] private TextMeshProUGUI _text1;
+    [SerializeField] private Image _debugImage;
 
     // Start is called before the first frame update
     public new void Start()
@@ -27,7 +32,7 @@ public class SmartPhone : PlayerInput
             Yaw_Pitch_Role_Sensitivity = playerMove.Data.SmartphoneSens;
 
             ResetGyro();
-		}
+        }
     }
 
     // Update is called once per frame
@@ -46,9 +51,32 @@ public class SmartPhone : PlayerInput
             if (MyAbs(attitude.y) < _attitudeOffset.y) attitude.y = 0.0f;
             if (MyAbs(attitude.z) < _attitudeOffset.z) attitude.z = 0.0f;
 
-            if (attitude.x > 180) attitude.x -= 360;
-            if (attitude.y > 180) attitude.y -= 360;
-            if (attitude.z > 180) attitude.z -= 360;
+            //attitudeを-180～180に補正
+            if (attitude.x > 180)
+            {
+                attitude.x -= 360;
+            }
+            else if (attitude.x < -180)
+            {
+                attitude.x += 360;
+            }
+
+            if (attitude.y > 180) {
+                attitude.y -= 360;
+            }
+            else if (attitude.y < -180)
+            {
+                attitude.y += 360;
+            }
+
+            if (attitude.z > 180)
+            {
+                attitude.z -= 360;
+            }
+            else if (attitude.z < -180)
+            {
+                attitude.z += 360;
+            }
 
             //修正後のattitudeを格納
             TotalGyro = new Vector3(attitude.x, attitude.y, attitude.z);
@@ -62,10 +90,22 @@ public class SmartPhone : PlayerInput
             //修正後のrotationRateを格納
             Gyro = rotationRate * Mathf.Deg2Rad;
 
-            text1.text = "Gyro" + Gyro + "TotalGyro" + TotalGyro + "DefaultAttitude.x" + _defaultAttitude.x + "Attitude" + _gyro.attitude + "EulerAttitude" + _gyro.attitude.eulerAngles;
+            _text1.text = "Gyro" + Gyro + "TotalGyro" + TotalGyro + "DefaultAttitude.x" + _defaultAttitude.x + "Attitude" + _gyro.attitude + "EulerAttitude" + _gyro.attitude.eulerAngles;
+            _debugImage.transform.position = new Vector3(TotalGyro.x + 960.0f, TotalGyro.y + 540.0f, 0.0f);
             //Debug.Log("Gyro" + Gyro + "TotalGyro" + TotalGyro + "DefaultAttitude.x" + _defaultAttitude.x + "Attitude" + _gyro.attitude + "EulerAttitude" + _gyro.attitude.eulerAngles);
-		}
 
+            //各種ボタン判定
+            if (isAccel)
+            {
+                float speed = 0.1f;
+                speed = CheckCanBoost(speed);
+                if (speed > 0.0f)
+                {
+                    playerMove.Speed += speed;
+                    Debug.Log("neko" + speed);
+                }
+            }
+        }
     }
 
     /// <summary>
@@ -81,5 +121,30 @@ public class SmartPhone : PlayerInput
     {
         if (num >= 0.0f) return num;
         else return -num;
+    }
+
+    //
+    //アクセル＆ブレーキボタン関数
+    //
+    public void StartAccel()
+    {
+        playerMove.IsAccel = true;
+        isAccel = true;
+    }
+
+    public void StopAccel()
+    {
+        playerMove.IsAccel = false;
+        isAccel = false;
+    }
+
+    public void StartBrake()
+    {
+        playerMove.IsBrake = true;
+    }
+
+    public void StopBrake()
+    {
+        playerMove.IsBrake = false;
     }
 }

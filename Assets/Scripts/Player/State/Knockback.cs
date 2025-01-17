@@ -24,7 +24,7 @@ public class Knockback : IState
 		// ��e���̃J�����V�F�C�N���J�n
 		var shaker = GameObject.FindGameObjectWithTag("VirtualCamera").GetComponent<CinemachineImpulseSource>();
 		shaker.GenerateImpulse();
-		player.photonView.RPC(nameof(player.Effect.EndBoost), RpcTarget.All);
+		//player.photonView.RPC(nameof(player.Effect.EndBoost), RpcTarget.All);
 		// �m�b�N�o�b�N������
 		if (!isKnockbacking)
 		{
@@ -51,7 +51,8 @@ public class Knockback : IState
 		float dot = Vector3.Dot(player.transform.forward, rigidbody.linearVelocity.normalized);
 		if (dot > 0.0f)
 		{
-			player.photonView.RPC(nameof(player.ChangeState), RpcTarget.All, PLAYER_STATE.IDLE);
+			//player.photonView.RPC(nameof(player.ChangeState), RpcTarget.All, PLAYER_STATE.IDLE);
+			player.ChangeState(PLAYER_STATE.IDLE);
 		}
 	}
 
