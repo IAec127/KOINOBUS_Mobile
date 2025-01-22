@@ -142,7 +142,13 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 		get { return deadState; }
 		set { deadState = value; }
 	}
-
+	//初期状態
+	private Stop stopState;
+	public Stop StopState
+	{
+		get { return stopState; }
+		set { stopState = value; }
+	}
 
 	//------------------------
 	// 基本ステータス
@@ -324,6 +330,8 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 		stateList.Add(stunState);
 		deadState = new Dead(this);
 		stateList.Add(DeadState);
+		stopState = new Stop(this);
+		stateList.Add(stopState);
 
         //if(photonView.IsMine)
         {
@@ -353,7 +361,7 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 		}
 		// シーン管理用クラスに自分を登録
 		//SceneController.instance.AddPlayer(this);
-		nowState = idleState;
+		nowState = stopState;
 
 	}
 
@@ -785,4 +793,16 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
     }
 
     #endregion
+
+	public bool GameStartCheck()
+	{
+		if (nowState != stopState)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 }

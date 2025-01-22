@@ -6,6 +6,8 @@ public class HaloManager : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI count;
     [SerializeField] private TextMeshProUGUI time;
+    [SerializeField] private GameObject player;
+    private PlayerMove playerMove;
 
     private int haloNum = 0;
     private int maxHaloNum = 0;
@@ -15,7 +17,7 @@ public class HaloManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        playerMove = player.transform.GetComponent<PlayerMove>();
     }
 
     // Update is called once per frame
@@ -23,7 +25,10 @@ public class HaloManager : MonoBehaviour
     {
         count.text = haloNum.ToString() + " / " + maxHaloNum.ToString();
         //時間をカウントダウンする
-        countUp++;
+        if (playerMove.GameStartCheck())
+        {
+            countUp++;
+        }
         var countTime = (int)(countUp / 60.0f);
         time.text = countTime.ToString();
 

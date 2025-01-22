@@ -1200,7 +1200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1878332237}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &706713559
@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   count: {fileID: 1983336104}
   time: {fileID: 749538865}
+  player: {fileID: 1878332237}
 --- !u!1 &749538863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,7 +1374,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 751240373380760643, guid: e06484d97c9f12146bb3209861e91ba0, type: 3}
   m_PrefabInstance: {fileID: 1362731938}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1878332237}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c588c879ead81154bb3bf3c527e65748, type: 3}
@@ -1530,13 +1531,13 @@ VideoPlayer:
   m_TargetMaterialProperty: <noninit>
   m_RenderMode: 2
   m_AspectRatio: 2
-  m_DataSource: 0
+  m_DataSource: 1
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
   m_AudioOutputMode: 2
   m_TargetAudioSources: []
   m_DirectAudioVolumes: []
-  m_Url: 
+  m_Url: https://iaec127.github.io/KOINOBUS_Mobile/countdown.mp4
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
@@ -2561,7 +2562,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7211071110170087673, guid: e06484d97c9f12146bb3209861e91ba0, type: 3}
   m_PrefabInstance: {fileID: 1362731938}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1878332237}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b2be17be7ce60943b899a8276c85778, type: 3}
@@ -2822,6 +2823,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1851303094}
   m_CullTransparentMesh: 1
+--- !u!1 &1878332237 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3393812498941615350, guid: e06484d97c9f12146bb3209861e91ba0, type: 3}
+  m_PrefabInstance: {fileID: 1362731938}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1924475648
 GameObject:
   m_ObjectHideFlags: 0

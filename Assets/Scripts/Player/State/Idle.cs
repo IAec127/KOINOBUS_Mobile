@@ -17,6 +17,7 @@ public class Idle : IState
 	private bool beforeBrakeFlag = false;
 	private float boostTime = 0.0f;
 	private float boostCooldown = 0.0f;
+	private int test;
 
 	public Idle(PlayerMove playerMove) : base(playerMove) 
 	{

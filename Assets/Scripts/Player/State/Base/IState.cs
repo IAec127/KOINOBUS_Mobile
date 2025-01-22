@@ -9,6 +9,7 @@ public enum PLAYER_STATE
 	KNOCK_BACK,
 	STUN,
 	DEAD,
+	STOP,
 }
 
 public abstract class IState
