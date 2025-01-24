@@ -64,19 +64,19 @@ public class Idle : IState
 		}
 		player.IsAccel = false;
 
-		if(player.IsBrake)
-		{
-			if (!beforeBrakeFlag)
-			{
-				//player.photonView.RPC(nameof(player.Effect.StartBrake), Photon.Pun.RpcTarget.All);
-			}
-		}
-		else if (!player.IsBrake && beforeBrakeFlag)
-		{
-			//player.photonView.RPC(nameof(player.Effect.EndBrake), Photon.Pun.RpcTarget.All);
-		}
-		beforeBrakeFlag = player.IsBrake;
-		player.IsBrake = false;
+		//if(player.IsBrake)
+		//{
+		//	if (!beforeBrakeFlag)
+		//	{
+		//		//player.photonView.RPC(nameof(player.Effect.StartBrake), Photon.Pun.RpcTarget.All);
+		//	}
+		//}
+		//else if (!player.IsBrake && beforeBrakeFlag)
+		//{
+		//	//player.photonView.RPC(nameof(player.Effect.EndBrake), Photon.Pun.RpcTarget.All);
+		//}
+		//beforeBrakeFlag = player.IsBrake;
+		//player.IsBrake = false;
 
 		// �Œ�E�ō����x�`�F�b�N
 		if (player.Speed < player.Data.MinSpeed)
