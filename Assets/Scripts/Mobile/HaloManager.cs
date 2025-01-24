@@ -23,14 +23,14 @@ public class HaloManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        count.text = haloNum.ToString() + " / " + maxHaloNum.ToString();
+        count.text = (maxHaloNum - haloNum).ToString() + " / " + maxHaloNum.ToString();
         //時間をカウントダウンする
         if (playerMove.GameStartCheck())
         {
             countUp++;
         }
-        var countTime = (int)(countUp / 60.0f);
-        time.text = countTime.ToString();
+        var countTime = countUp / 60.0f;
+        time.text = countTime.ToString("f1");
 
         //ゲーム終了判定
         if (gameStart && haloNum <= 0)
@@ -48,7 +48,7 @@ public class HaloManager : MonoBehaviour
 
     public void Hit()
     {
-        haloNum--;   
+        haloNum--;
     }
 
     void ChangeScene()

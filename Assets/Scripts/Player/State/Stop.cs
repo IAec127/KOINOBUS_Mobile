@@ -25,7 +25,7 @@ public class Stop : IState
 
 	public override void Exit()
 	{
-        player.Speed = player.Data.MinSpeed;
+        player.Speed = (player.Data.MinSpeed + player.Data.MaxSpeed) * 0.5f;
     }
 
     public override void Update()

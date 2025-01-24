@@ -343,9 +343,9 @@ public class PlayerMove : MonoBehaviourPunCallbacks, IPunObservable
 				pUI.SendMessage("SetTarget", this, SendMessageOptions.RequireReceiver);
 				uiScript = pUI.GetComponent<PlayerUI>();
 				// レティクルクラスにローカルプレイヤーを渡す
-				var reticleUI = GameObject.FindGameObjectWithTag("Reticle").GetComponent<Reticle>();
-				reticleUI.localPlayer = gameObject;
-				reticleUI.bulletSpawner = gameObject.GetComponent<BulletSpawner>();
+				//var reticleUI = GameObject.FindGameObjectWithTag("Reticle").GetComponent<Reticle>();
+				//reticleUI.localPlayer = gameObject;
+				//reticleUI.bulletSpawner = gameObject.GetComponent<BulletSpawner>();
 				//hpUI = GameObject.FindWithTag("HpUI").GetComponent<HpUI>();
 				scoreUI = GameObject.FindWithTag("ScoreUI").GetComponent<ScoreUI>();
 			}

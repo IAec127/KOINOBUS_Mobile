@@ -54,44 +54,44 @@ public class BulletSpawner : MonoBehaviourPunCallbacks
 	}
 	public void BulletUpdate()
     {
-        //if(photonView.IsMine)
-        {
-            if (currentShots > 0)
-            {
-                LockOn();
-            }
+  //      //if(photonView.IsMine)
+  //      {
+  //          if (currentShots > 0)
+  //          {
+  //              LockOn();
+  //          }
 
-            // チャージ処理
-            HandleCharge();
+  //          // チャージ処理
+  //          HandleCharge();
 
-            // 発射処理
-            if (player.IsShot)
-			{
-				Fire();
-			}
+  //          // 発射処理
+  //          if (player.IsShot)
+		//	{
+		//		Fire();
+		//	}
 
-            // リロード条件を確認
-            if (currentShots < data.MaxBullet && isReloading == false)
-			{
-				StartCoroutine(Reload());
-			}
-		}
+  //          // リロード条件を確認
+  //          if (currentShots < data.MaxBullet && isReloading == false)
+		//	{
+		//		StartCoroutine(Reload());
+		//	}
+		//}
 	}
 
     void HandleCharge()
     {
-        if (player.IsCharging)
-        {
-            chargeTime = Mathf.Min(chargeTime + Time.deltaTime, data.MaxChargeTime+ (player.GetItems[(int)Item.ITEM_EFFECT.CHARGE - 1] * player.Data.Item_charge));
+     //   if (player.IsCharging)
+     //   {
+     //       chargeTime = Mathf.Min(chargeTime + Time.deltaTime, data.MaxChargeTime+ (player.GetItems[(int)Item.ITEM_EFFECT.CHARGE - 1] * player.Data.Item_charge));
 
-            // チャージ時間分押し続けるか狂風イベント中ならチャージ完了
-            if ((chargeTime >= data.MaxChargeTime + (player.GetItems[(int)Item.ITEM_EFFECT.CHARGE - 1] * player.Data.Item_charge) ||
-					player.EventType == EventManager.EVENT_TYPE.CRAZY_WIND) && !isChargeComplete)
-            {
-                Debug.Log("チャージ完了！");
-                isChargeComplete = true;
-            }
-        }
+     //       // チャージ時間分押し続けるか狂風イベント中ならチャージ完了
+     //       if ((chargeTime >= data.MaxChargeTime + (player.GetItems[(int)Item.ITEM_EFFECT.CHARGE - 1] * player.Data.Item_charge) ||
+					//player.EventType == EventManager.EVENT_TYPE.CRAZY_WIND) && !isChargeComplete)
+     //       {
+     //           Debug.Log("チャージ完了！");
+     //           isChargeComplete = true;
+     //       }
+     //   }
     }
 
     void ResetCharge()
@@ -102,90 +102,90 @@ public class BulletSpawner : MonoBehaviourPunCallbacks
 
     private void LockOn()
     {
-		TARGET_TYPE beforeType = targetType;
-		int beforeID = targetID;
-		// ターゲットを探す
-		var targetTrans = FindClosestEnemy();
-        // ターゲットを初めてロックオンしたとき
-        if (beforeType == TARGET_TYPE.NONE && targetType != TARGET_TYPE.NONE)
-        {
-            // ロックオンUIを表示
-            lockOnUI.ActiveUI();
-            lockOnUI.Target = targetTrans;
-        }
-        // 同じターゲットをロックオンし続けている時
-        else if (beforeType == targetType && beforeID == targetID && targetType != TARGET_TYPE.NONE)
-        {
-            // ロックオン時間を更新
-            lockonTime += Time.deltaTime;
-            if (lockonTime > maxLockOnTime)
-            {
-                Debug.Log("ロックオンしました");
-                lockOnUI.LockedOn();
-                lockonTime = 0.0f;
-                isLockedOn = true;
-            }
-        }
-        // ロックオンしているターゲットがいなくなった時
-        else if (beforeType != TARGET_TYPE.NONE && targetType == TARGET_TYPE.NONE)
-        {
-            // ロックオンUIを非表示
-            lockOnUI.InActiveUI();
-            lockOnUI.LockOut();
-            // ロックオン時間を初期化
-            lockonTime = 0.0f;
-            isLockedOn = false;
-        }
-        // 違うターゲットをロックオンした時
-        else if (targetType != TARGET_TYPE.NONE && (targetType != beforeType || targetID != beforeID))
-		{
-			lockOnUI.Target = targetTrans;
-			lockOnUI.LockOut();
-			// ロックオン時間を初期化
-			lockonTime = 0.0f;
-			isLockedOn = false;
-        }
-        else
-        {
-        }
+		//TARGET_TYPE beforeType = targetType;
+		//int beforeID = targetID;
+		//// ターゲットを探す
+		//var targetTrans = FindClosestEnemy();
+  //      // ターゲットを初めてロックオンしたとき
+  //      if (beforeType == TARGET_TYPE.NONE && targetType != TARGET_TYPE.NONE)
+  //      {
+  //          // ロックオンUIを表示
+  //          lockOnUI.ActiveUI();
+  //          lockOnUI.Target = targetTrans;
+  //      }
+  //      // 同じターゲットをロックオンし続けている時
+  //      else if (beforeType == targetType && beforeID == targetID && targetType != TARGET_TYPE.NONE)
+  //      {
+  //          // ロックオン時間を更新
+  //          lockonTime += Time.deltaTime;
+  //          if (lockonTime > maxLockOnTime)
+  //          {
+  //              Debug.Log("ロックオンしました");
+  //              lockOnUI.LockedOn();
+  //              lockonTime = 0.0f;
+  //              isLockedOn = true;
+  //          }
+  //      }
+  //      // ロックオンしているターゲットがいなくなった時
+  //      else if (beforeType != TARGET_TYPE.NONE && targetType == TARGET_TYPE.NONE)
+  //      {
+  //          // ロックオンUIを非表示
+  //          lockOnUI.InActiveUI();
+  //          lockOnUI.LockOut();
+  //          // ロックオン時間を初期化
+  //          lockonTime = 0.0f;
+  //          isLockedOn = false;
+  //      }
+  //      // 違うターゲットをロックオンした時
+  //      else if (targetType != TARGET_TYPE.NONE && (targetType != beforeType || targetID != beforeID))
+		//{
+		//	lockOnUI.Target = targetTrans;
+		//	lockOnUI.LockOut();
+		//	// ロックオン時間を初期化
+		//	lockonTime = 0.0f;
+		//	isLockedOn = false;
+  //      }
+  //      else
+  //      {
+  //      }
 
 	}
 
 	void Fire()
     {
-        // リロード中のチェックは不要になった
-        int shotsRequired = isChargeComplete ? 3 : 1;
+  //      // リロード中のチェックは不要になった
+  //      int shotsRequired = isChargeComplete ? 3 : 1;
 
-        if (currentShots - shotsRequired < 0)
-        {
-            Debug.Log("弾数が足りません！");
-            ResetCharge();
-            return;
-        }
+  //      if (currentShots - shotsRequired < 0)
+  //      {
+  //          Debug.Log("弾数が足りません！");
+  //          ResetCharge();
+  //          return;
+  //      }
 
-        shotEffect.Play();
-        if(isLockedOn)
-        {
-            bulletManager.Fire(photonView.OwnerActorNr, firePoint.transform, isChargeComplete, targetType, targetID);
-        }
-        else
-        {
-			bulletManager.Fire(photonView.OwnerActorNr, firePoint.transform, isChargeComplete, TARGET_TYPE.NONE, -1);
-		}
+  //      shotEffect.Play();
+  //      if(isLockedOn)
+  //      {
+  //          bulletManager.Fire(photonView.OwnerActorNr, firePoint.transform, isChargeComplete, targetType, targetID);
+  //      }
+  //      else
+  //      {
+		//	bulletManager.Fire(photonView.OwnerActorNr, firePoint.transform, isChargeComplete, TARGET_TYPE.NONE, -1);
+		//}
 
-		// 狂風イベント中なら弾が減らない
-		if (player.EventType!=EventManager.EVENT_TYPE.CRAZY_WIND)
-        {
-            currentShots -= shotsRequired;
-        }
-        if(isLockedOn)
-        {
-			lockOnUI.LockOut();
-			// ロックオン時間を初期化
-			lockonTime = 0.0f;
-			isLockedOn = false;
-		    ResetCharge();
-        }
+		//// 狂風イベント中なら弾が減らない
+		//if (player.EventType!=EventManager.EVENT_TYPE.CRAZY_WIND)
+  //      {
+  //          currentShots -= shotsRequired;
+  //      }
+  //      if(isLockedOn)
+  //      {
+		//	lockOnUI.LockOut();
+		//	// ロックオン時間を初期化
+		//	lockonTime = 0.0f;
+		//	isLockedOn = false;
+		//    ResetCharge();
+  //      }
     }
 
 	private Transform FindClosestEnemy()

@@ -16,5 +16,6 @@ public class Halo : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         haloManager.Hit();
+        Destroy(this.gameObject);
     }
 }

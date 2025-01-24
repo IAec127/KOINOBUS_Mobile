@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ResultManager : MonoBehaviour
 {
@@ -11,12 +12,23 @@ public class ResultManager : MonoBehaviour
     void Start()
     {
         var time = timeScore / 60.0f;
-        timeScoreText.text = time.ToString();
+        timeScoreText.text = time.ToString("f1");
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void ReStart()
+    {
+        SceneManager.LoadScene("MobileTitle");
+    }
+
+    public void Quit()
+    {
+        Debug.Log("neko");
+        Application.Quit();
     }
 }
