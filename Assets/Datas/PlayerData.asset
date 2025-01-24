@@ -16,7 +16,7 @@ MonoBehaviour:
   minSpeed: 20
   maxSpeed: 100
   speedDecay: 1
-  brakePower: 100
+  brakePower: 50
   rollControllTime: 1
   returnRollSpeed: 1
   totalBoost: 100
