@@ -28,9 +28,9 @@ MonoBehaviour:
   rayOffset: 0.8
   rayDistance: 7
   minHeight: 8
-  keyboardSens: {x: 150, y: 20, z: 80}
+  keyboardSens: {x: 400, y: 20, z: 80}
   joyconSens: {x: 50, y: 50, z: 50}
-  smartphoneSens: {x: 1, y: 1.5, z: 1}
+  smartphoneSens: {x: 1.5, y: 1.5, z: 1}
   maxJoyconRot: {x: 90, y: 90}
   joyconDeadzone: {x: 0.1, y: 0.1}
   accelRot: 30
