@@ -56,26 +56,25 @@ public class Idle : IState
 
 		if (!player.IsBoost && player.IsAccel && player.EventType != EventManager.EVENT_TYPE.TAIL_WIND)
 		{
-			//player.photonView.RPC(nameof(player.Effect.StartBoost), Photon.Pun.RpcTarget.All);
+			player.Effect.StartBoost();
 		}
 		if (player.IsBoost && !player.IsAccel && player.EventType != EventManager.EVENT_TYPE.TAIL_WIND)
 		{
-			//player.photonView.RPC(nameof(player.Effect.EndBoost), Photon.Pun.RpcTarget.All);
+			player.Effect.EndBoost();
 		}
-		player.IsAccel = false;
 
-		//if(player.IsBrake)
-		//{
-		//	if (!beforeBrakeFlag)
-		//	{
-		//		//player.photonView.RPC(nameof(player.Effect.StartBrake), Photon.Pun.RpcTarget.All);
-		//	}
-		//}
-		//else if (!player.IsBrake && beforeBrakeFlag)
-		//{
-		//	//player.photonView.RPC(nameof(player.Effect.EndBrake), Photon.Pun.RpcTarget.All);
-		//}
-		//beforeBrakeFlag = player.IsBrake;
+		if (player.IsBrake)
+		{
+			if (!beforeBrakeFlag)
+			{
+				player.Effect.StartBrake();
+			}
+		}
+		else if (!player.IsBrake && beforeBrakeFlag)
+		{
+			player.Effect.EndBrake();
+		}
+		beforeBrakeFlag = player.IsBrake;
 		//player.IsBrake = false;
 
 		// �Œ�E�ō����x�`�F�b�N

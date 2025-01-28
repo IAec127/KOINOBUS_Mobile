@@ -70,8 +70,10 @@ public class PlayerEffect : MonoBehaviourPunCallbacks
 	{
 		player.IsBoost = true;
 		BoostEffect.gameObject.SetActive(true);
+		Debug.Log("Boost");
+		Debug.Log(player.IsBoost);
 		BoostEffect.Play();
-		if (photonView.IsMine)
+		//if (photonView.IsMine)
 		{
 			AccelLineEffect.gameObject.SetActive(true);
 			AccelLineEffect.Play();
@@ -82,13 +84,14 @@ public class PlayerEffect : MonoBehaviourPunCallbacks
 	[PunRPC]
 	public void EndBoost()
 	{
+		Debug.Log("EndBoost");
 		player.IsBoost = false;
 		if(boostEffect.isPlaying)
 		{
 			BoostEffect.Stop();
 			BoostEffect.gameObject.SetActive(false);
 		}
-		if (photonView.IsMine)
+		//if (photonView.IsMine)
 		{
 			if(AccelLineEffect.isPlaying)
 			{
@@ -102,12 +105,14 @@ public class PlayerEffect : MonoBehaviourPunCallbacks
 	[PunRPC]
 	public void StartBrake()
 	{
+		//Debug.Log("Brake");
 		animator.SetBool("IsBrake", true);
 	}
 
 	[PunRPC]
 	public void EndBrake()
 	{
+		//Debug.Log("EndBrake");
 		animator.SetBool("IsBrake",false);
 	}
 

@@ -79,7 +79,7 @@ public class SmartPhone : PlayerInput
             }
 
             //èCê≥å„ÇÃattitudeÇäiî[
-            TotalGyro = new Vector3(attitude.x, attitude.y, attitude.z);
+            TotalGyro = new Vector3(attitude.z, attitude.y, attitude.x);
 
             Vector3 rotationRate = new Vector3(_gyro.rotationRateUnbiased.x * Mathf.Rad2Deg, _gyro.rotationRateUnbiased.y * Mathf.Rad2Deg, _gyro.rotationRateUnbiased.z * Mathf.Rad2Deg);
 
@@ -97,12 +97,11 @@ public class SmartPhone : PlayerInput
             //äeéÌÉ{É^ÉìîªíË
             if (isAccel)
             {
-                float speed = 0.1f;
+                float speed = 0.2f;
                 speed = CheckCanBoost(speed);
                 if (speed > 0.0f)
                 {
                     playerMove.Speed += speed;
-                    Debug.Log("neko" + speed);
                 }
             }
         }
@@ -114,6 +113,8 @@ public class SmartPhone : PlayerInput
     public override void ResetGyro()
     {
         _defaultAttitude = _gyro.attitude.eulerAngles;
+        totalGyro = Vector3.zero;
+        transform.rotation = Quaternion.Euler(0.0f, transform.eulerAngles.y, 0.0f);
     }
 
     //ê‚ëŒílÇï‘Ç∑
